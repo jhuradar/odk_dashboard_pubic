@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-lg-6" data-ng-controller="RatioCtrl" link="ratioChild_5_4" ng-if="links.ratioChild_5_4">
+	<rd-widget>
+      <rd-widget-header icon="fa-table" title="Children 5:4 years of age">
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding" loading="!data">
+			<table class="table">
+				<thead>
+					<tr><th><select ng-model="grouping.idType" ng-change="loadRatio()">
+							<option value="Interviewer">Interviewer</option>
+							<option value="Supervisor">Supervisor</option>
+							<option value="Cluster">Cluster</option>
+						</select></th>
+						<th>5 years old</th><th>4 years old</th><th>Ratio</th></tr>
+				</thead>
+			    <tbody>
+					  <tr ng-repeat="d in data">
+						<td>{{d.interviewerNumber}}</td>
+						<td>{{d.count1}}</td>
+						<td>{{d.count2}}</td>
+						<td>{{d.count2 == 0 ? '' : ((d.count1/d.count2)*100).toFixed(2)}}</td>
+					  </tr>
+					  <tr class="bold"><td>Total</td><td>{{totalCount1}}</td><td>{{totalCount2}}</td><td>{{totalCount2 == 0 ? '' : ((totalCount1/totalCount2)*100).toFixed(2)}}</td></tr>
+			    </tbody>
+			</table>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+
+  <div class="col-lg-6" data-ng-controller="RatioCtrl" link="ratioWoman_14_15" ng-if="links.ratioWoman_14_15">
+	<rd-widget>
+      <rd-widget-header icon="fa-table" title="Women 14:15 years of age">
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding" loading="!data">
+		<table class="table">
+			<thead>
+				<tr><th><select ng-model="grouping.idType" ng-change="loadRatio()">
+						<option value="Interviewer">Interviewer</option>
+						<option value="Supervisor">Supervisor</option>
+						<option value="Cluster">Cluster</option>
+					</select></th>
+					<th>14 years old</th><th>15 years old</th><th>Ratio</th></tr>
+			</thead>
+		    <tbody>
+				  <tr ng-repeat="d in data">
+					<td>{{d.interviewerNumber}}</td>
+					<td>{{d.count1}}</td>
+					<td>{{d.count2}}</td>
+					<td>{{d.count2 == 0 ? '' : ((d.count1/d.count2)*100).toFixed(2)}}</td>
+				  </tr>
+				  <tr class="bold"><td>Total</td><td>{{totalCount1}}</td><td>{{totalCount2}}</td><td>{{totalCount2 == 0 ? '' : ((totalCount1/totalCount2)*100).toFixed(2)}}</td></tr>
+		    </tbody>
+		</table>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6" data-ng-controller="RatioCtrl" link="ratioWoman_50_49" ng-if="links.ratioWoman_50_49">
+	<rd-widget>
+      <rd-widget-header icon="fa-table" title="Women 50:49 years of age">
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding" loading="!data">
+		<table class="table">
+			<thead>
+				<tr><th><select ng-model="grouping.idType" ng-change="loadRatio()">
+						<option value="Interviewer">Interviewer</option>
+						<option value="Supervisor">Supervisor</option>
+						<option value="Cluster">Cluster</option>
+					</select></th>
+					<th>50 years old</th><th>49 years old</th><th>Ratio</th></tr>
+			</thead>
+		    <tbody>
+				  <tr ng-repeat="d in data">
+					<td>{{d.interviewerNumber}}</td>
+					<td>{{d.count1}}</td>
+					<td>{{d.count2}}</td>
+					<td>{{d.count2 == 0 ? '' : ((d.count1/d.count2)*100).toFixed(2)}}</td>
+				  </tr>
+				  <tr class="bold"><td>Total</td><td>{{totalCount1}}</td><td>{{totalCount2}}</td><td>{{totalCount2 == 0 ? '' : ((totalCount1/totalCount2)*100).toFixed(2)}}</td></tr>
+		    </tbody>
+		</table>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div>

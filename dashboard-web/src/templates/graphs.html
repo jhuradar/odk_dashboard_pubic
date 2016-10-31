@@ -1,0 +1,30 @@
+<div class="row" data-ng-controller="ReportCtrl" link="household" ng-if="links.household">
+	<rd-widget>
+      <rd-widget-header icon="fa-bar-chart" title="Household Response Rate">
+		<select ng-model="grouping.idType" ng-change="loadReport()">
+			<option value="Interviewer">Interviewer</option>
+			<option value="Supervisor">Supervisor</option>
+			<option value="Cluster">Cluster</option>
+		</select>
+      </rd-widget-header>
+      <rd-widget-body classes="no-padding" loading="!data">
+      	<div google-chart chart="stackChart"></div>
+      </rd-widget-body>
+    </rd-widget>
+</div>
+
+<div class="row" data-ng-controller="ReportCtrl" link="woman" ng-if="links.woman">
+	<rd-widget>
+      <rd-widget-header icon="fa-bar-chart" title="Woman Response Rate">
+		<select ng-model="grouping.idType" ng-change="loadReport()">
+			<option value="Interviewer">Interviewer</option>
+			<option value="Supervisor">Supervisor</option>
+			<option value="Cluster">Cluster</option>
+		</select>
+      </rd-widget-header>
+      <rd-widget-body classes="no-padding" loading="!data">
+      	<div google-chart chart="stackChart"></div>
+      </rd-widget-body>
+    </rd-widget>
+</div>
+

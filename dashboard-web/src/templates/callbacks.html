@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-lg-6" data-ng-controller="LinkCtrl" link="callbacksTotals" data-ng-init="loadData()" ng-if="links.callbacksTotals">
+	<rd-widget>
+      <rd-widget-header icon="fa-phone" title="Callbacks Totals">
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding" loading="!data">
+		<table class="table">
+			<thead>
+				<tr><th>Cluster</th><th>Any Callback</th><th>Woman Callbacks</th><th>Child Callbacks</th><th>Household Only</th></tr>
+			</thead>
+		    <tbody>
+				  <tr ng-repeat="d in data">
+					<td>{{d.number}}</td>
+					<td>{{d.totalAny}}</td>
+					<td>{{d.totalWoman}}</td>
+					<td>{{d.totalChild}}</td>
+					<td>{{d.totalHouseholdOnly}}</td>
+				  </tr>
+				  <tr class="bold"><td>Total</td><td>{{totalTotalAny}}</td><td>{{totalTotalWoman}}</td><td>{{totalTotalChild}}</td><td>{{totalTotalHouseholdOnly}}</td></tr>
+		    </tbody>
+		</table>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+      Anthro Callbacks are not displayed in a separate column, but can alter the count in the Any Callback column.
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6" data-ng-controller="LinkCtrl" link="householdCallbacks" data-ng-init="loadData()" ng-if="links.householdCallbacks">
+	<rd-widget>
+      <rd-widget-header icon="fa-phone" title="Any Callback">
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding" loading="!data">
+		<table class="table">
+			<thead>
+				<tr><th>Address ID</th><th>Head of Household</th></tr>
+			</thead>
+		    <tbody>
+				  <tr ng-repeat="d in data">
+					<td>{{d.id}}</td>
+					<td>{{d.name}}</td>
+				  </tr>
+		    </tbody>
+		</table>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6" data-ng-controller="LinkCtrl" link="womanCallbacks" data-ng-init="loadData()" ng-if="links.womanCallbacks">
+	<rd-widget>
+      <rd-widget-header icon="fa-phone" title="Woman Callbacks">
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding" loading="!data">
+		<table class="table">
+			<thead>
+				<tr><th>Woman ID</th><th>Woman Name</th></tr>
+			</thead>
+		    <tbody>
+				  <tr ng-repeat="d in data">
+					<td>{{d.id}}</td>
+					<td>{{d.name}}</td>
+				  </tr>
+		    </tbody>
+		</table>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6" data-ng-controller="LinkCtrl" link="childCallbacks" data-ng-init="loadData()" ng-if="links.childCallbacks">
+	<rd-widget>
+      <rd-widget-header icon="fa-phone" title="Child Callbacks">
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding" loading="!data">
+		<table class="table">
+			<thead>
+				<tr><th>Child ID</th><th>Child Name</th></tr>
+			</thead>
+		    <tbody>
+				  <tr ng-repeat="d in data">
+					<td>{{d.id}}</td>
+					<td>{{d.name}}</td>
+				  </tr>
+		    </tbody>
+		</table>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div>

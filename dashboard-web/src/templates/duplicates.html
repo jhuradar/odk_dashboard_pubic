@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-6" data-ng-controller="LinkCtrl" link="duplicateHouseholds" data-ng-init="loadData()" ng-if="links.duplicateHouseholds">
+	<rd-widget>
+      <rd-widget-header icon="fa-exclamation-triangle" title="Duplicate Households">
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding" loading="!data">
+		<table class="table">
+			<thead>
+				<tr><th>Address ID</th><th>Count</th></tr>
+			</thead>
+		    <tbody>
+				  <tr ng-repeat="d in data">
+					<td>{{d.addressId}}</td>
+					<td>{{d.count}}</td>
+				  </tr>
+		    </tbody>
+		</table>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div>

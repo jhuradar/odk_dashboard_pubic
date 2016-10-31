@@ -1,0 +1,13 @@
+.classpath
+.project
+/dashboard-rs/.settings/org.eclipse.jdt.core.prefs
+/dashboard-security/.settings/org.eclipse.jdt.core.prefs
+/dashboard-war/.settings/org.eclipse.jdt.core.prefs
+/dashboard-web/.settings/org.eclipse.jdt.core.prefs
+/d.bat
+/d2.bat
+/d3.bat
+/dashboard-rs/target
+/dashboard-security/target
+/dashboard-war/target
+/dashboard-web/target

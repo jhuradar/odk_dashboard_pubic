@@ -1,0 +1,192 @@
+<div class="row" data-ng-controller="LinkCtrl" ng-if="links.totals" link="totals" data-ng-init="loadData()">
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon orange pull-left">
+					<i class="fa fa-sitemap"></i>
+				</div>
+				<div class="title">{{data.formsSubmitted}} / {{data.formsSubmittedTotal}}</div>
+				<div class="comment">Households Completed</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon green pull-left">
+					<i class="fa fa-users"></i>
+				</div>
+				<div class="title">{{data.totalWoman}} / {{data.totalWomanTotal}}</div>
+				<div class="comment">Women Completed</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon green pull-left">
+					<i class="fa fa-users"></i>
+				</div>
+				<div class="title">{{data.totalChild}} / {{data.totalChildTotal}}</div>
+				<div class="comment">Children Completed</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon blue pull-left">
+					<i class="fa fa-support"></i>
+				</div>
+				<div class="title">{{data.totalAnthropometry}} / {{data.totalAnthropometryTotal}}</div>
+				<div class="comment">Anthropometry Completed</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6" data-ng-controller="ReportCtrl" link="household" ng-if="links.household">
+		<rd-widget>
+      		<rd-widget-header icon="fa-reply-all" title="Household Response Rate">
+      		</rd-widget-header>
+      		<rd-widget-body classes="medium no-padding" loading="!data">
+				<table class="table">
+					<thead>
+						<tr><th><select ng-model="grouping.idType" ng-change="loadReport()">
+								<option value="Interviewer">Interviewer</option>
+								<option value="Supervisor">Supervisor</option>
+								<option value="Cluster">Cluster</option>
+							</select></th>
+							<th>Response</th><th>Total</th><th>%</th></tr>
+					</thead>
+					<tbody>
+					  <tr ng-repeat="d in data">
+						<td>{{d.interviewerNumber}}</td>
+						<td>{{d.successCount}}</td>
+						<td>{{d.totalCount}}</td>
+						<td>{{d.totalCount == 0 ? '' : '' + ((d.successCount/d.totalCount)*100).toFixed(0) + '%'}}</td>
+					  </tr>
+					  <tr class="bold"><td>Total</td><td>{{totalSuccess}}</td><td>{{totalTotal}}</td><td>{{totalTotal == 0 ? '' : (totalSuccess/totalTotal).toFixed(2)}}</td></tr>
+					</tbody>
+				</table>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+
+	<div class="col-lg-6" data-ng-controller="ReportCtrl" link="woman" ng-if="links.woman">
+		<rd-widget>
+      		<rd-widget-header icon="fa-reply-all" title="Woman Response Rate">
+      		</rd-widget-header>
+      		<rd-widget-body classes="medium no-padding" loading="!data">
+				<table class="table">
+					<thead>
+						<tr><th><select ng-model="grouping.idType" ng-change="loadReport()">
+								<option value="Interviewer">Interviewer</option>
+								<option value="Supervisor">Supervisor</option>
+								<option value="Cluster">Cluster</option>
+							</select></th>
+						<th>Response</th><th>Total</th><th>%</th></tr>
+					</thead>
+					<tbody>
+					  <tr ng-repeat="d in data">
+						<td>{{d.interviewerNumber}}</td>
+						<td>{{d.successCount}}</td>
+						<td>{{d.totalCount}}</td>
+						<td>{{d.totalCount == 0 ? '' : '' + ((d.successCount/d.totalCount)*100).toFixed(0) + '%'}}</td>
+					  </tr>
+					  <tr class="bold"><td>Total</td><td>{{totalSuccess}}</td><td>{{totalTotal}}</td><td>{{totalTotal == 0 ? '' : (totalSuccess/totalTotal).toFixed(2)}}</td></tr>
+					</tbody>
+				</table>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6" data-ng-controller="ReportCtrl" link="caretaker" ng-if="links.caretaker">
+		<rd-widget>
+      		<rd-widget-header icon="fa-reply-all" title="Child Response Rate">
+      		</rd-widget-header>
+      		<rd-widget-body classes="medium no-padding" loading="!data">
+				<table class="table">
+					<thead>
+						<tr><th><select ng-model="grouping.idType" ng-change="loadReport()">
+								<option value="Interviewer">Interviewer</option>
+								<option value="Supervisor">Supervisor</option>
+								<option value="Cluster">Cluster</option>
+							</select></th>
+						<th>Response</th><th>Total</th><th>%</th></tr>
+					</thead>
+					<tbody>
+					  <tr ng-repeat="d in data">
+						<td>{{d.interviewerNumber}}</td>
+						<td>{{d.successCount}}</td>
+						<td>{{d.totalCount}}</td>
+						<td>{{d.totalCount == 0 ? '' : '' + ((d.successCount/d.totalCount)*100).toFixed(0) + '%'}}</td>
+					  </tr>
+					  <tr class="bold"><td>Total</td><td>{{totalSuccess}}</td><td>{{totalTotal}}</td><td>{{totalTotal == 0 ? '' : (totalSuccess/totalTotal).toFixed(2)}}</td></tr>
+					</tbody>
+				</table>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+
+	<div class="col-lg-6" data-ng-controller="ReportCtrl" link="eligWoman" ng-if="links.eligWoman">
+		<rd-widget>
+      		<rd-widget-header icon="fa-reply-all" title="Eligible Woman">
+      		</rd-widget-header>
+      		<rd-widget-body classes="medium no-padding" loading="!data">
+				<table class="table">
+					<thead>
+						<tr><th><select ng-model="grouping.idType" ng-change="loadReport()">
+								<option value="Interviewer">Interviewer</option>
+								<option value="Supervisor">Supervisor</option>
+								<option value="Cluster">Cluster</option>
+							</select></th>
+						<th>Eligible Woman</th><th>Completed Households</th><th>Average</th></tr>
+					</thead>
+					<tbody>
+					  <tr ng-repeat="d in data">
+						<td>{{d.interviewerNumber}}</td>
+						<td>{{d.successCount}}</td>
+						<td>{{d.totalCount}}</td>
+						<td>{{d.totalCount == 0 ? '' : (d.successCount/d.totalCount).toFixed(2)}}</td>
+					  </tr>
+					  <tr class="bold"><td>Total</td><td>{{totalSuccess}}</td><td>{{totalTotal}}</td><td>{{totalTotal == 0 ? '' : (totalSuccess/totalTotal).toFixed(2)}}</td></tr>
+					</tbody>
+				</table>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6" data-ng-controller="ReportCtrl" link="eligChild" ng-if="links.eligChild">
+		<rd-widget>
+      		<rd-widget-header icon="fa-reply-all" title="Eligible Child">
+      		</rd-widget-header>
+      		<rd-widget-body classes="medium no-padding" loading="!data">
+				<table class="table">
+					<thead>
+						<tr><th><select ng-model="grouping.idType" ng-change="loadReport()">
+								<option value="Interviewer">Interviewer</option>
+								<option value="Supervisor">Supervisor</option>
+								<option value="Cluster">Cluster</option>
+							</select></th>
+						<th>Eligible Child</th><th>Completed Households</th><th>Average</th></tr>
+					</thead>
+					<tbody>
+					  <tr ng-repeat="d in data">
+						<td>{{d.interviewerNumber}}</td>
+						<td>{{d.successCount}}</td>
+						<td>{{d.totalCount}}</td>
+						<td>{{d.totalCount == 0 ? '' : (d.successCount/d.totalCount).toFixed(2)}}</td>
+					  </tr>
+					  <tr class="bold"><td>Total</td><td>{{totalSuccess}}</td><td>{{totalTotal}}</td><td>{{totalTotal == 0 ? '' : (totalSuccess/totalTotal).toFixed(2)}}</td></tr>
+					</tbody>
+				</table>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>

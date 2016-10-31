@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <context:component-scan base-package="edu.jhsph.radar.dashboard.security.dao"/>
+    
+	<beans>
+		<bean id="authenticationProvider"
+				class="edu.jhsph.radar.dashboard.security.DashboardAuthenticationProvider">
+			<property name="realmString" value="${odk.realmString}"/>
+		</bean>
+				
+ 	  	<security:http use-expressions="true" auto-config="false" disable-url-rewriting="true" 
+				create-session="always">
+			
+			<security:intercept-url pattern="/**" access="isAuthenticated()"/>
+
+			<security:http-basic />
+		</security:http>
+
+		<security:authentication-manager alias="authentication-manager">
+			<security:authentication-provider ref="authenticationProvider"/>
+	    </security:authentication-manager>
+
+	</beans>
+
+</beans>
